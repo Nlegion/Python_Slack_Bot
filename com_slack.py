@@ -1,19 +1,21 @@
+import logging
 import os
 import ssl
 from pathlib import Path
-
+import log
 import certifi
 import slack
 from dotenv import load_dotenv
 from slack.errors import SlackApiError
 
 # global
+logg = logging.getLogger('botlogger')
 ssl_context = ssl.create_default_context(cafile=certifi.where())
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 client = slack.WebClient(token=os.environ['SLACK_TOKEN'], ssl=ssl_context)
 all_users_store = {}
-channel_id = 'C03RNUN0ELB'
+channel_id = 'C03RNUN0ELB'  # id slack channel
 
 
 # get a list of users in channel
@@ -27,6 +29,7 @@ def users_in_channel():
                 addname.append(info['user']['profile']['real_name'])
         return addname
     except SlackApiError as e:
+        logg.error(f'Error: get users in channel. Slack says: {e}')
         print(f'Error fetching conversations: {e}')
 
 
@@ -44,6 +47,7 @@ def get_all_users():
         save_users(result["members"])
         return all_users_store
     except SlackApiError as e:
+        logg.error(f'Error: get all users in workspace. Slack says: {e}')
         print(f'Error creating conversation: {e}')
 
 
@@ -64,6 +68,8 @@ def invite_to_channel(users):
         response = client.conversations_invite(
             channel=channel_id,
             users=users)
+        logg.info(f'Success! {len(users)} user added.')
         return print(f'Success! {len(users)} user added.')
     except SlackApiError as e:
+        logg.error(f'Error: invite users to channel. Slack says: {e}')
         print(f'Error invite users of list: {e}')
