@@ -1,8 +1,15 @@
+import sys
+
 import csv
 
 
 def parse_email():
-    with open('./csv/Base.csv', newline='', encoding='utf-8-sig') as csvfile:
+    try:
+        f = open('./csv/Base.csv', newline='', encoding='utf-8-sig')
+    except OSError:
+        print(f'Could not open/read file')
+        sys.exit()
+    with f as csvfile:
         list_of_nicks = []
         reader = csv.reader(csvfile, delimiter=';', quotechar=',', quoting=csv.QUOTE_MINIMAL)
         for row in reader:
