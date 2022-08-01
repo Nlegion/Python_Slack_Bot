@@ -11,5 +11,5 @@ if __name__ == '__main__':
     stream = logging.StreamHandler()
     stream.setFormatter(settings)
     log.addHandler(stream)
-    # В логгирование передаем имя текущей функции и имя вызвавшей функции
+    # Test message
     log.info('Отладочное сообщение')

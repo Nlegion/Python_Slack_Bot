@@ -6,3 +6,20 @@
 2022-07-31 22:23:24,345 - INFO - invite new users 
 2022-07-31 22:23:24,663 - INFO - Success! 1 user added. 
 2022-07-31 22:23:24,664 - INFO - Off Bot 
+2022-07-31 22:33:59,808 - INFO - Start Bot 
+2022-07-31 22:33:59,808 - INFO - read csv 
+2022-07-31 22:33:59,808 - INFO - request all users in slack 
+2022-07-31 22:34:00,199 - ERROR - Error: get all users in workspace. Slack says: The request to the Slack API failed.
+The server responded with: {'ok': False, 'error': 'token_revoked'} 
+2022-07-31 22:34:00,200 - INFO - request all users in channel 
+2022-07-31 22:34:00,503 - ERROR - Error: get users in channel. Slack says: The request to the Slack API failed.
+The server responded with: {'ok': False, 'error': 'token_revoked'} 
+2022-07-31 22:34:00,503 - INFO - search unknown users 
+2022-07-31 22:35:35,396 - INFO - Start Bot 
+2022-07-31 22:35:35,396 - INFO - read csv 
+2022-07-31 22:35:35,397 - INFO - request all users in slack 
+2022-07-31 22:35:35,698 - INFO - request all users in channel 
+2022-07-31 22:35:36,577 - INFO - search unknown users 
+2022-07-31 22:35:36,578 - INFO - invite new users 
+2022-07-31 22:35:37,031 - INFO - Success! 1 user added. 
+2022-07-31 22:35:37,031 - INFO - Off Bot 
